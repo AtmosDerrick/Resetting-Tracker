@@ -26,12 +26,19 @@ const Home: React.FC = () => {
         password: values.password,
       });
 
+      console.log(result);
+
       if (result?.error) {
-        throw new Error(result.error);
+        return result.error === "CredentialsSignin"
+          ? alert(
+              "Invalid credentials. Please check your username and password."
+            )
+          : alert("Failed to sign-in. Please try again.");
       } else {
         router.push("/dashboard/overview");
       }
     } catch (err: any) {
+      console.log(err, "kl");
       alert(err?.data?.message || "Sign-in failed. Please try again.");
     }
   };
