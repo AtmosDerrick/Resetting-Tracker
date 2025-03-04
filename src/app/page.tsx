@@ -32,7 +32,7 @@ const Home: React.FC = () => {
         router.push("/dashboard/overview");
       }
     } catch (err: any) {
-      alert(err.message || "Sign-in failed. Please try again.");
+      alert(err?.data?.message || "Sign-in failed. Please try again.");
     }
   };
 
